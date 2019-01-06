@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Photo Editor</title>
+    <!-- legatura css -->
+    <link rel="stylesheet" type="text/css" href="editor.css">
+
+    <link rel="shortcut icon" type="image/png" href="img/fav.png" />
+
+    <!-- importa bootstrp ca framework de css -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+    <!-- icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <div class="mainWrapper">
+
+        <!-- butoanele de editare -->
+        <div class="buttonsWrapper">
+
+                <div class="container ">
+                        <div class="row">
+
+                            <!-- butoane pentru desenare -->
+                          <div class="col-sm">
+                                <div class="text">
+                                        Draw lines  <i class="material-icons">edit</i>
+                                    </div>
+                                    <div class="controls">
+                                        
+                                        Line width :
+                                        <select id="selWidth">
+                                            <option class="opt" value="1">1</option>
+                                            <option value="3">3</option>
+                                            <option value="5" selected="selected">5</option>
+                                            <option value="7">7</option>
+                                            <option value="9">9</option>
+                                            <option value="11">11</option>
+                                        </select>
+                                        Color :
+                                        <select id="selColor">
+                                            <option value="black">black</option>
+                                            <option value="blue" selected="selected">blue</option>
+                                            <option value="red">red</option>
+                                            <option value="green">green</option>
+                                            <option value="yellow">yellow</option>
+                                            <option value="gray">gray</option>
+                                        </select>
+                                    </div>
+                          </div>
+                          <div class="col-sm">
+                              <div class="controls">
+                                    <button type="button" class="btn btn-outline-dark" onclick="javascript:initCrop(); return false;">Crop <i class="material-icons">crop</i></button>
+                                
+                                    <button type="button" class="btn btn-outline-dark">Resize <i class="material-icons">transform</i> </button>
+                              </div>
+                               
+                          </div>
+                        </div>
+                      </div>
+         
+        </div>
+
+
+        <!-- sectiunea pentru imagine -->
+        <div class="imageWrapper">
+            Drag and drop image to start.
+                <canvas id="selectedImage"  class="resize-container" style="border-style: dotted;">
+                    The canvas element is not supported.
+                </canvas>
+        </div>
+        <div class="buttonsDelete">
+            <button class="bottomBtn" onclick="javascript:clearArea();return false;">Delete image <i class="material-icons">delete</i></button>
+            <a class="bottomBtn" id='downloadLink' href="#" download="processedImage.png">
+                    Download <i class="material-icons">file_download</i>
+             </a>
+        </div>
+
+       
+    </div>
+
+
+
+
+
+    <script>
+        'use strict';
+
+        //Selectors
+        let canvasImage = document.getElementById('selectedImage');
+
+        //Methods
+        function drawImage(img) {
+            let cW = img.naturalWidth, cH = img.naturalHeight;
+
+            canvasImage.width = cW;
+            canvasImage.height = cH;
+
+            let context = canvasImage.getContext('2d');
+            context.drawImage(img, 0, 0);
+        }
+
+        //Events
+        document.addEventListener('dragover', function (e) { e.preventDefault(); })
+        document.addEventListener('drop', function (e) {
+            e.preventDefault();
+            var files = e.dataTransfer.files;
+
+            if (files.length > 0) {
+                var reader = new FileReader();
+
+                reader.addEventListener('load', function (e) {
+                    let image = document.createElement('img');
+                    image.addEventListener('load', function () {
+                        drawImage(this);
+                    });
+                    image.setAttribute('src', e.target.result);
+                });
+
+                reader.readAsDataURL(files[0]);
+            }
+        });
+
+        document.getElementById('downloadLink').addEventListener('click', function () {
+            canvasImage.toBlob(function (blob) { downloadLink.setAttribute('href', URL.createObjectURL(blob)) }, 'image/png');
+        });
+    </script>
+
+        </body>
+      </html>      
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="editor.js"></script>
+</body>
+
+</html>

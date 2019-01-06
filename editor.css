@@ -1,0 +1,124 @@
+
+body, html{
+    width: 100%;
+    height: 100%;
+}
+body {
+    margin: 0;
+    padding: 0;
+
+    color: rgb(0, 38, 95);
+}
+
+
+
+#selectedImage{
+    border-style: dotted;  
+    max-height: 600px;
+ 
+}
+
+.mainWrapper{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.imageWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    
+    color: rgb(0, 38, 95);
+    height: 100%;
+}
+
+
+.buttonsDelete{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    margin: 0.5rem;
+}
+.bottomBtn{
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden; 
+    font-size: 1rem;
+    padding: 0 0 2.5rem 0;
+    color: rgb(0, 38, 95);
+    font-weight: bold;
+    margin: 0 2rem;
+
+    display: flex;
+    text-align: center;justify-content: center;
+}
+
+ a:hover{
+    text-decoration: none !important;
+}
+
+div.container{
+    border-bottom: solid 1px rgb(0, 38, 95);
+    padding: 2rem 0;
+
+    text-align: center;
+}
+
+select#selWidth, 
+select#selColor{
+    margin: 0 1rem;
+    color: rgb(0, 38, 95);
+}
+
+select#selWidth:hover, 
+select#selWidth:focus,
+select#selColor:hover,
+select#selColor:focus
+{
+    cursor: pointer;
+    color: rgb(0, 38, 95);
+    font-weight: bold;
+    background-color: rgb(223, 225, 255);
+}
+
+.text{
+    color: rgb(0, 38, 95);
+    font-weight: bold;
+}
+
+.btn-outline-dark{
+    color: rgb(0, 38, 95) !important;
+    border-color: rgb(0, 38, 95) !important;
+}
+
+.btn-outline-dark:hover{
+    color: white !important;
+    border-color: rgb(0, 38, 95) !important;
+    background-color: rgb(0, 38, 95) !important;
+}
+
+ button.btn.btn-outline-dark{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+
+    margin: 0 2rem;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
