@@ -87,3 +87,25 @@ endMoving = function(e){
     $(document).off('mouseup', endMoving);
     $(document).off('mousemove', moving);
 };
+
+//sounds for buttons
+function playSound(){
+    var audio = document.getElementById("audio");
+    audio.play();
+}
+
+document.getElementById('normalEffect').addEventListener('click', ()=>{
+    playSound();
+});
+
+document.getElementById('grayscaleEffect').addEventListener('click', ()=>{playSound()});
+
+document.getElementById('invertEffect').addEventListener('click', ()=>{playSound()});
+
+document.getElementById('crop-btn').addEventListener('click', ()=>{playSound()});
+
+document.getElementById('resize-btn').addEventListener('click',()=>{playSound()});
+
+document.getElementById('delete-btn').addEventListener('click', ()=>{playSound()});
+
+document.getElementById('downloadLink').addEventListener('click',()=>{playSound()});
